@@ -1,0 +1,248 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #ffffff;
+    color: #333333;
+    line-height: 1.6;
+}
+
+/* --- Hero / Top Section --- */
+.hero {
+    position: relative;
+    background-color: #2b2b2b;
+    background-image: url('Shailesh.jpeg'); 
+    background-size: 50%;
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    color: #ffffff;
+    min-height: 550px;
+    z-index: 1;
+}
+
+/* Dark overlay effect matching the mockup gradient */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(43,43,43,1) 45%, rgba(43,43,43,0.7) 70%, rgba(43,43,43,0.2) 100%);
+    z-index: -1;
+}
+
+/* Header Navigation */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 35px 8%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.logo-area h1 {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.logo-area p {
+    font-size: 11px;
+    color: #a0a0a0;
+    font-weight: 400;
+    margin-top: 2px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 18px;
+}
+
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: color 0.2s ease;
+}
+
+nav ul li a:hover, nav ul li a.active {
+    color: #3b82f6;
+}
+
+/* Hero Text Content */
+.hero-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 60px 8% 120px 8%;
+}
+
+.hero-content {
+    max-width: 520px;
+}
+
+.hero-content h2 {
+    font-size: 38px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    color: #e5e7eb;
+}
+
+.hero-content p {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.8;
+    color: #cbd5e1;
+    margin-bottom: 30px;
+}
+
+/* Standardized Action Buttons */
+.btn {
+    display: inline-block;
+    background-color: #2563eb;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 12px 28px;
+    border-radius: 3px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover {
+    background-color: #1d4ed8;
+    transform: translateY(-1px);
+}
+
+/* --- About Me Section --- */
+.about-section {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 8% 70px 8%;
+    display: flex;
+    align-items: flex-start;
+    gap: 8%;
+    position: relative;
+    z-index: 10;
+}
+
+.about-image {
+    flex: 1;
+    max-width: 320px;
+    margin-top: -80px; /* Shifts image upward into the hero block area seamlessly */
+}
+
+.about-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+.about-content {
+    flex: 1.6;
+    padding-top: 40px;
+}
+
+.about-content h3 {
+    font-size: 26px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #111827;
+}
+
+.about-content .title-line {
+    width: 45px;
+    height: 3px;
+    background-color: #2563eb;
+    margin: 8px 0 25px 0;
+}
+
+.about-content .lead-text {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.about-content p {
+    font-size: 14px;
+    color: #4b5563;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+/* Responsive Layout Overrides */
+@media (max-width: 991px) {
+    .hero {
+        background-size: cover;
+        background-position: center;
+    }
+    
+    .hero::before {
+        background: rgba(43, 43, 43, 0.85);
+    }
+
+    header {
+        flex-direction: column;
+        gap: 20px;
+        padding: 25px 20px;
+        text-align: center;
+    }
+    
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .hero-container {
+        padding: 40px 20px 60px 20px;
+        text-align: center;
+    }
+
+    .hero-content {
+        margin: 0 auto;
+    }
+
+    .about-section {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 50px 20px;
+        gap: 40px;
+    }
+
+    .about-image {
+        margin-top: 0;
+        max-width: 280px;
+    }
+
+    .about-content {
+        padding-top: 0;
+    }
+
+    .about-content .title-line {
+        margin: 8px auto 25px auto;
+    }
+}
