@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="skGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06B6D4" />
+      <stop offset="50%" stop-color="#8B5CF6" />
+      <stop offset="100%" stop-color="#EC4899" />
+    </linearGradient>
+    <radialGradient id="skBgGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#1E1638" />
+      <stop offset="100%" stop-color="#08090D" />
+    </radialGradient>
+  </defs>
+  <!-- Background Rounded Shield -->
+  <rect x="4" y="4" width="92" height="92" rx="24" fill="url(#skBgGlow)" stroke="url(#skGrad)" stroke-width="3" />
+  <!-- Hexagonal Circuit Accents -->
+  <circle cx="20" cy="20" r="3" fill="#06B6D4" opacity="0.8" />
+  <circle cx="80" cy="80" r="3" fill="#A855F7" opacity="0.8" />
+  <!-- Monogram SK -->
+  <text x="50" y="65" font-family="'Kanit', 'Arial Black', sans-serif" font-weight="900" font-size="44" fill="url(#skGrad)" text-anchor="middle" letter-spacing="-1">SK</text>
+</svg>
