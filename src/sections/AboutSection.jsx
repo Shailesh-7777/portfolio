@@ -161,6 +161,40 @@ export default function AboutSection() {
           {/* Right Column: Strengths & Technical Pillars */}
           <div className="lg:col-span-5 flex flex-col gap-5">
             
+            {/* Professional Portrait Card with Descriptive Alt Text */}
+            <div className="glass-card p-5 rounded-2xl border border-brandCardBorder flex flex-col sm:flex-row items-center gap-5 group hover:border-accentCyan/40 transition-all shadow-xl">
+              <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden bg-black/80 border-2 border-accentCyan/50 shadow-[0_0_25px_rgba(0,245,255,0.3)] shrink-0">
+                <picture>
+                  <source srcSet="/profile.webp" type="image/webp" />
+                  <img
+                    src="/profile.jpg"
+                    alt="Shailesh Kumar - Full Stack Developer"
+                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                    width="128"
+                    height="128"
+                  />
+                </picture>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
+              </div>
+              <div className="text-center sm:text-left">
+                <span className="text-[10px] font-mono uppercase tracking-widest text-accentCyan flex items-center justify-center sm:justify-start gap-1.5 mb-1">
+                  <Sparkles className="w-3 h-3" />
+                  <span>Software Developer</span>
+                </span>
+                <h3 className="text-xl font-kanit font-bold text-white mb-0.5">
+                  Shailesh Kumar
+                </h3>
+                <p className="text-xs font-mono text-brandMuted mb-2">
+                  B.Tech CSE • MMU Mullana (2024–2028)
+                </p>
+                <div className="inline-flex items-center gap-1.5 text-[11px] font-mono text-emerald-400 bg-emerald-500/10 px-2.5 py-0.5 rounded-full border border-emerald-500/30">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                  <span>Available for Hire</span>
+                </div>
+              </div>
+            </div>
+
             {/* Core Strengths Card */}
             <div className="glass-card p-6 rounded-2xl border border-brandCardBorder space-y-4">
               <h3 className="text-base font-kanit font-bold text-white flex items-center gap-2 tracking-wide">

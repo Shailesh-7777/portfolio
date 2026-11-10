@@ -81,14 +81,26 @@ export default function ResumeModal({ isOpen, onClose }) {
             </button>
           </div>
 
-          <a
-            href={personalInfo.resumePath}
-            download="Shailesh_Kumar_Resume.pdf"
-            className="btn-gradient-glow inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold text-white uppercase tracking-wider shadow-md"
-          >
-            <Download className="w-3.5 h-3.5" />
-            <span>Download PDF</span>
-          </a>
+          <div className="flex items-center gap-2">
+            <a
+              href={personalInfo.resumePath}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3 py-1.5 rounded-lg text-xs font-mono text-brandSlate hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 inline-flex items-center gap-1.5 transition-colors"
+            >
+              <Eye className="w-3.5 h-3.5 text-accentCyan" />
+              <span className="hidden sm:inline">Open in Tab</span>
+            </a>
+
+            <a
+              href={personalInfo.resumePath}
+              download="Shailesh_Kumar_Resume.pdf"
+              className="btn-gradient-glow inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold text-white uppercase tracking-wider shadow-md"
+            >
+              <Download className="w-3.5 h-3.5" />
+              <span>Download PDF</span>
+            </a>
+          </div>
         </div>
 
         {/* Modal Scrollable Body */}

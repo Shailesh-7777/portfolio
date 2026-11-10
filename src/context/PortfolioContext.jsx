@@ -13,26 +13,11 @@ const STORAGE_KEYS = {
 // Default owner passcode for Shailesh
 const DEFAULT_PASSCODE = 'shailesh@2026';
 
-// Initial normalization of certifications: Ensure CodeSoft is published, others can be drafted
-const normalizedDefaultCerts = [
-  {
-    id: "cert-codesoft-internship",
-    title: "Web Development Internship Certificate",
-    issuer: "CodeSoft",
-    date: "2024",
-    credentialId: "CS-WD-2024-SK",
-    verificationUrl: "https://github.com/Shailesh-7777",
-    image: "/cert-placeholder.svg",
-    published: true,
-    isPlaceholder: false,
-    note: "Awarded upon successful completion of intensive 30-day web application development milestones in HTML5, CSS3, JavaScript, and Git workflows."
-  },
-  ...defaultCertifications.map((c, i) => ({
-    ...c,
-    // By default, only real verified ones are published; draft placeholders are kept in owner dashboard
-    published: false,
-  }))
-];
+// Initial normalization of certifications: Real verified certificates are published
+const normalizedDefaultCerts = defaultCertifications.map((c) => ({
+  ...c,
+  published: true,
+}));
 
 const normalizedDefaultProjects = defaultProjects.map((p) => ({
   ...p,

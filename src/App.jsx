@@ -17,6 +17,7 @@ import ProjectsSection from './sections/ProjectsSection';
 import CertificationsSection from './sections/CertificationsSection';
 import ExperienceSection from './sections/ExperienceSection';
 import InterestsRoadmapSection from './sections/InterestsRoadmapSection';
+import ResumeSection from './sections/ResumeSection';
 import ContactSection from './sections/ContactSection';
 
 import ResumeModal from './components/ResumeModal';
@@ -122,7 +123,10 @@ function PortfolioApp() {
         {/* 8. Interests & Future Roadmap Section */}
         <InterestsRoadmapSection />
 
-        {/* 9. Contact Section */}
+        {/* 9. Professional Resume Section */}
+        <ResumeSection onOpenResumeModal={handleOpenResume} />
+
+        {/* 10. Contact Section */}
         <ContactSection />
       </main>
 

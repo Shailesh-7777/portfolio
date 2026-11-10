@@ -21,6 +21,7 @@ const mainNavItems = [
   { name: 'Skills', href: '#skills', targetId: 'skills' },
   { name: 'Education', href: '#education', targetId: 'education' },
   { name: 'Certificates', href: '#certifications', targetId: 'certifications' },
+  { name: 'Resume', href: '#resume', targetId: 'resume' },
   { name: 'Contact', href: '#contact', targetId: 'contact' },
 ];
 

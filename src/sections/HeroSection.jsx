@@ -364,12 +364,19 @@ export default function HeroSection({ onOpenResume }) {
 
               {/* Holographic Avatar Photo Container */}
               <div className="relative w-56 h-56 sm:w-64 sm:h-64 rounded-2xl overflow-hidden bg-black/90 border-2 border-accentCyan/50 shadow-[0_0_30px_rgba(0,245,255,0.35)] translate-z-20">
-                <img
-                  src={photoSrc}
-                  alt={personalInfo.name}
-                  onError={handlePhotoError}
-                  className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                />
+                <picture>
+                  <source srcSet="/profile.webp" type="image/webp" />
+                  <img
+                    src={photoSrc}
+                    alt="Shailesh Kumar - Full Stack Developer"
+                    onError={handlePhotoError}
+                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                    loading="eager"
+                    fetchPriority="high"
+                    width="256"
+                    height="256"
+                  />
+                </picture>
 
                 {/* Scanline hologram effect over photo */}
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-accentCyan/10 to-accentPurple/20 pointer-events-none mix-blend-overlay" />

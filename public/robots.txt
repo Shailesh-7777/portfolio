@@ -1,0 +1,18 @@
+# Robots.txt for Shailesh Kumar Developer Portfolio
+# Permitting all legitimate search engine crawlers
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
+
+# Googlebot specific directives
+User-agent: Googlebot
+Allow: /
+Allow: /resume/
+Allow: /certificates/
+Allow: /profile.jpg
+
+# Sitemap index
+Sitemap: https://shailesh-portfolio.onrender.com/sitemap.xml
