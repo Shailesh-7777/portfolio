@@ -61,6 +61,7 @@ export const navLinks = [
   { name: "Certifications", href: "#certifications" },
   { name: "Experience", href: "#experience" },
   { name: "Roadmap", href: "#roadmap" },
+  { name: "Resume", href: "#resume" },
   { name: "Contact", href: "#contact" }
 ];
 
@@ -418,15 +419,32 @@ export const filterCatalogByProfile = (products, userProfile) => {
   }
 ];
 
+export const defaultCertificateCategories = [
+  "Web Development",
+  "Full Stack Development",
+  "Java Programming",
+  "Cloud Computing",
+  "AWS",
+  "Database Management",
+  "Artificial Intelligence",
+  "Internship",
+  "Hackathons",
+  "Other Achievements"
+];
+
 export const certifications = [
   {
     id: "cert-aws-cloud-foundations",
     title: "AWS Academy Graduate – Cloud Foundations",
     issuer: "AWS Academy",
+    category: "Cloud Computing",
     date: "11/10/2026",
     credentialId: "uuzQvcvn",
     verificationUrl: "https://www.credly.com/go/uuzQvcvn",
     image: "/certificates/cert-aws.png",
+    fileUrl: "/certificates/cert-aws.png",
+    fileType: "image",
+    order: 1,
     isPlaceholder: false,
     published: true,
     note: "Official AWS Training Badge representing 20 hours of comprehensive cloud coursework covering global cloud infrastructure, core compute (EC2), storage (S3), IAM security, and architecture."
@@ -435,10 +453,14 @@ export const certifications = [
     id: "cert-codsoft-webdev",
     title: "Web Development Virtual Internship Certificate",
     issuer: "CodSoft",
+    category: "Internship",
     date: "08/06/2026",
     credentialId: "7072c87",
     verificationUrl: "https://www.codsoft.in",
     image: "/certificates/cert-codsoft.png",
+    fileUrl: "/certificates/cert-codsoft.png",
+    fileType: "image",
+    order: 2,
     isPlaceholder: false,
     published: true,
     note: "Awarded for successfully completing 4 weeks virtual internship in Web Development (05/05/2026 to 05/06/2026) with wonderful remarks, building production-grade web components in HTML5, CSS3, and JavaScript."
@@ -447,10 +469,14 @@ export const certifications = [
     id: "cert-tata-genai-analytics",
     title: "GenAI Powered Data Analytics Job Simulation",
     issuer: "TATA & Forage",
+    category: "Artificial Intelligence",
     date: "July 26th, 2025",
     credentialId: "Ys7qmoqsokuBCMKgW",
     verificationUrl: "https://www.theforage.com",
     image: "/certificates/cert-tata.png",
+    fileUrl: "/certificates/cert-tata.png",
+    fileType: "image",
+    order: 3,
     isPlaceholder: false,
     published: true,
     note: "Completed practical simulation tasks in exploratory data analysis and risk profiling, predicting delinquency with AI, and implementing an AI-driven collections strategy."
@@ -459,10 +485,14 @@ export const certifications = [
     id: "cert-nsdc-skill-india",
     title: "Web Design & Development Online Skilling Course",
     issuer: "NSDC & Skill India Digital Hub (SIDH)",
+    category: "Web Development",
     date: "May 02, 2026",
     credentialId: "SIDH-WD-2026",
     verificationUrl: "https://www.skillindiadigital.gov.in",
     image: "/certificates/cert-nsdc.png",
+    fileUrl: "/certificates/cert-nsdc.png",
+    fileType: "image",
+    order: 4,
     isPlaceholder: false,
     published: true,
     note: "Online skilling course on Web Design & Development offered by National Skill Development Corporation (NSDC) through Skill India Digital Hub (SIDH)."

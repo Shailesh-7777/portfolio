@@ -1,11 +1,20 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { projects as defaultProjects, certifications as defaultCertifications } from '../data/portfolioData';
+import {
+  projects as defaultProjects,
+  certifications as defaultCertifications,
+  defaultCertificateCategories
+} from '../data/portfolioData';
+import {
+  loadPersistentCertificates,
+  savePersistentCertificates
+} from '../utils/certificateStorage';
 
 const PortfolioContext = createContext(null);
 
 const STORAGE_KEYS = {
   PROJECTS: 'shailesh_portfolio_projects_v2',
-  CERTS: 'shailesh_portfolio_certs_v2',
+  CERTS: 'shailesh_portfolio_certs_v3',
+  CATEGORIES: 'shailesh_portfolio_categories_v3',
   OWNER_AUTH: 'shailesh_owner_session_v2',
   OWNER_PASSCODE: 'shailesh_owner_passcode_v2',
 };
@@ -14,9 +23,12 @@ const STORAGE_KEYS = {
 const DEFAULT_PASSCODE = 'shailesh@2026';
 
 // Initial normalization of certifications: Real verified certificates are published
-const normalizedDefaultCerts = defaultCertifications.map((c) => ({
+const normalizedDefaultCerts = defaultCertifications.map((c, index) => ({
   ...c,
   published: true,
+  category: c.category || 'Web Development',
+  fileType: c.fileType || 'image',
+  order: c.order || index + 1,
 }));
 
 const normalizedDefaultProjects = defaultProjects.map((p) => ({
@@ -36,18 +48,35 @@ export function PortfolioProvider({ children }) {
     return normalizedDefaultProjects;
   });
 
-  // 2. Certifications State
+  // 2. Certifications State (initialized with fallback, then loaded from IndexedDB)
   const [certifications, setCertifications] = useState(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEYS.CERTS);
-      if (saved) return JSON.parse(saved);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      }
     } catch (e) {
-      console.error("Failed to load certifications from storage", e);
+      console.error("Failed to load certifications from local storage", e);
     }
     return normalizedDefaultCerts;
   });
 
-  // 3. Owner Authentication State
+  // 3. Certificate Categories State
+  const [categories, setCategories] = useState(() => {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEYS.CATEGORIES);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      }
+    } catch (e) {
+      console.error("Failed to load categories from storage", e);
+    }
+    return defaultCertificateCategories;
+  });
+
+  // 4. Owner Authentication State
   const [isOwner, setIsOwner] = useState(() => {
     try {
       return sessionStorage.getItem(STORAGE_KEYS.OWNER_AUTH) === 'true';
@@ -56,10 +85,36 @@ export function PortfolioProvider({ children }) {
     }
   });
 
-  // 4. Modal Visibility State
+  // 5. Modal Visibility State
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [isDashboardModalOpen, setIsDashboardModalOpen] = useState(false);
   const [dashboardTab, setDashboardTab] = useState('projects'); // 'projects' | 'certificates' | 'settings'
+
+  // Hydrate certificates from IndexedDB on initial mount
+  useEffect(() => {
+    let isMounted = true;
+    async function hydrateCertificates() {
+      try {
+        const loaded = await loadPersistentCertificates(normalizedDefaultCerts);
+        if (isMounted && Array.isArray(loaded) && loaded.length > 0) {
+          // Sort loaded certificates by order
+          const sorted = [...loaded].sort((a, b) => (a.order || 0) - (b.order || 0));
+          setCertifications(sorted);
+
+          // Extract any custom categories from loaded certs
+          const certCategories = loaded.map(c => c.category).filter(Boolean);
+          setCategories(prev => {
+            const combined = Array.from(new Set([...prev, ...certCategories]));
+            return combined;
+          });
+        }
+      } catch (err) {
+        console.warn('Hydration from IndexedDB failed, using memory/localStorage:', err);
+      }
+    }
+    hydrateCertificates();
+    return () => { isMounted = false; };
+  }, []);
 
   // Persist projects whenever changed
   useEffect(() => {
@@ -70,14 +125,19 @@ export function PortfolioProvider({ children }) {
     }
   }, [projects]);
 
-  // Persist certifications whenever changed
+  // Persist certifications to IndexedDB and localStorage whenever changed
+  useEffect(() => {
+    savePersistentCertificates(certifications);
+  }, [certifications]);
+
+  // Persist categories whenever changed
   useEffect(() => {
     try {
-      localStorage.setItem(STORAGE_KEYS.CERTS, JSON.stringify(certifications));
+      localStorage.setItem(STORAGE_KEYS.CATEGORIES, JSON.stringify(categories));
     } catch (e) {
-      console.error("Failed to save certifications to storage", e);
+      console.error("Failed to save categories to storage", e);
     }
-  }, [certifications]);
+  }, [categories]);
 
   // Authenticate Owner
   const authenticateOwner = (enteredPasscode) => {
@@ -106,6 +166,16 @@ export function PortfolioProvider({ children }) {
     }
     localStorage.setItem(STORAGE_KEYS.OWNER_PASSCODE, newPasscode.trim());
     return { success: true };
+  };
+
+  // Add custom category
+  const addCategory = (newCat) => {
+    const trimmed = (newCat || '').trim();
+    if (!trimmed) return false;
+    if (!categories.includes(trimmed)) {
+      setCategories(prev => [...prev, trimmed]);
+    }
+    return true;
   };
 
   // Project Management Actions
@@ -151,18 +221,42 @@ export function PortfolioProvider({ children }) {
 
   // Certificate Management Actions
   const addCertificate = (newCert) => {
+    const maxOrder = certifications.reduce((acc, c) => Math.max(acc, c.order || 0), 0);
     const cert = {
       ...newCert,
       id: newCert.id || `cert-${Date.now()}`,
+      category: newCert.category || 'Web Development',
       published: newCert.published !== undefined ? newCert.published : true,
-      image: newCert.image || '/cert-placeholder.svg',
+      image: newCert.image || (newCert.fileType === 'pdf' ? '/cert-placeholder.svg' : '/cert-placeholder.svg'),
+      fileUrl: newCert.fileUrl || newCert.image || '',
+      fileType: newCert.fileType || (newCert.fileUrl?.endsWith('.pdf') ? 'pdf' : 'image'),
+      order: newCert.order !== undefined ? newCert.order : maxOrder + 1,
     };
-    setCertifications(prev => [cert, ...prev]);
+
+    // Ensure category is in categories list
+    if (cert.category && !categories.includes(cert.category)) {
+      addCategory(cert.category);
+    }
+
+    setCertifications(prev => [...prev, cert]);
     return cert;
   };
 
   const updateCertificate = (id, updatedFields) => {
-    setCertifications(prev => prev.map(c => c.id === id ? { ...c, ...updatedFields } : c));
+    // If category is new, add to categories list
+    if (updatedFields.category && !categories.includes(updatedFields.category)) {
+      addCategory(updatedFields.category);
+    }
+
+    setCertifications(prev => prev.map(c => {
+      if (c.id === id) {
+        const merged = { ...c, ...updatedFields };
+        if (updatedFields.fileType) merged.fileType = updatedFields.fileType;
+        if (updatedFields.fileUrl) merged.fileUrl = updatedFields.fileUrl;
+        return merged;
+      }
+      return c;
+    }));
   };
 
   const deleteCertificate = (id) => {
@@ -173,18 +267,43 @@ export function PortfolioProvider({ children }) {
     setCertifications(prev => prev.map(c => c.id === id ? { ...c, published: !c.published } : c));
   };
 
+  // Reorder a certificate up or down
+  const moveCertificate = (id, direction) => {
+    setCertifications(prev => {
+      const sorted = [...prev].sort((a, b) => (a.order || 0) - (b.order || 0));
+      const index = sorted.findIndex(c => c.id === id);
+      if (index === -1) return prev;
+
+      const targetIndex = direction === 'up' ? index - 1 : index + 1;
+      if (targetIndex < 0 || targetIndex >= sorted.length) return prev;
+
+      // Swap elements
+      const temp = sorted[index];
+      sorted[index] = sorted[targetIndex];
+      sorted[targetIndex] = temp;
+
+      // Reassign sequential order numbers
+      return sorted.map((c, i) => ({ ...c, order: i + 1 }));
+    });
+  };
+
   // Reset to initial clean state
   const resetToDefaultData = () => {
     setProjects(normalizedDefaultProjects);
     setCertifications(normalizedDefaultCerts);
+    setCategories(defaultCertificateCategories);
     localStorage.removeItem(STORAGE_KEYS.PROJECTS);
     localStorage.removeItem(STORAGE_KEYS.CERTS);
+    localStorage.removeItem(STORAGE_KEYS.CATEGORIES);
     localStorage.removeItem(STORAGE_KEYS.OWNER_PASSCODE);
+    savePersistentCertificates(normalizedDefaultCerts);
   };
 
-  // Computed public views (visitors only see published items)
+  // Computed public views (visitors only see published items, sorted by order)
   const publicProjects = projects.filter(p => p.published);
-  const publicCertifications = certifications.filter(c => c.published);
+  const publicCertifications = certifications
+    .filter(c => c.published)
+    .sort((a, b) => (a.order || 0) - (b.order || 0));
 
   return (
     <PortfolioContext.Provider
@@ -194,6 +313,7 @@ export function PortfolioProvider({ children }) {
         publicProjects,
         certifications,
         publicCertifications,
+        categories,
         isOwner,
         isAuthModalOpen,
         isDashboardModalOpen,
@@ -226,6 +346,8 @@ export function PortfolioProvider({ children }) {
         updateCertificate,
         deleteCertificate,
         toggleCertificatePublish,
+        moveCertificate,
+        addCategory,
       }}
     >
       {children}

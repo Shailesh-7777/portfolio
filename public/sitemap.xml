@@ -38,9 +38,29 @@
   </url>
   <url>
     <loc>https://shailesh-portfolio.onrender.com/#certifications</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://shailesh-portfolio.onrender.com/certificates/cert-aws.png</image:loc>
+      <image:title>AWS Academy Graduate - Cloud Foundations Certificate</image:title>
+      <image:caption>Official AWS training badge for Shailesh Kumar (Badge ID: uuzQvcvn)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://shailesh-portfolio.onrender.com/certificates/cert-codsoft.png</image:loc>
+      <image:title>CodSoft Web Development Virtual Internship Certificate</image:title>
+      <image:caption>CodSoft Internship Certificate for Shailesh Kumar (Certificate ID: 7072c87)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://shailesh-portfolio.onrender.com/certificates/cert-tata.png</image:loc>
+      <image:title>TATA GenAI Powered Data Analytics Job Simulation Certificate</image:title>
+      <image:caption>TATA and Forage Simulation Certificate for Shailesh Kumar (Code: Ys7qmoqsokuBCMKgW)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://shailesh-portfolio.onrender.com/certificates/cert-nsdc.png</image:loc>
+      <image:title>NSDC Skill India Web Design and Development Skilling Certificate</image:title>
+      <image:caption>Skill India Digital Hub Certificate for Shailesh Kumar</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://shailesh-portfolio.onrender.com/#resume</loc>
