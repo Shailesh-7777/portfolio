@@ -1,158 +1,246 @@
-# Shailesh Kumar — Premium Developer Portfolio
+# Shailesh Kumar — Futuristic 3D Developer Portfolio
 
-A modern, high-performance developer portfolio website engineered with **React 18**, **Vite**, **Tailwind CSS**, and **Lucide Icons**, inspired by the sleek visual design language, subtle gradient aesthetics, and interactive experience of modern developer showcases.
-
-![Portfolio Preview](./public/favicon.svg)
+A futuristic, neon-powered, 3D developer portfolio engineered with **React 18**, **Vite 6**, **Tailwind CSS**, and **Framer Motion**. Designed as a high-end cyberpunk developer showcase with a deep space atmosphere, neon cyan & purple lighting, floating 3D project cards, and a secure Owner Management Dashboard.
 
 ---
 
-## 🌟 Features & Highlights
+## 🌟 Futuristic 3D Architecture & Key Highlights
 
-- **Aesthetic Visual Architecture**: Futuristic dark theme with deep slate background (`#08090D`), vibrant purple, cyan, and blue radial ambient glows, and hairline glassmorphic cards.
-- **Original Interactive IDE / Code Editor**: Tabbed code preview window in the Hero section showcasing real code snippets in **React (`App.jsx`)**, **Node.js (`api.routes.js`)**, and **Java 21 (`InterviewService.java`)** with syntax highlighting and 1-click clipboard copy.
-- **Continuous Marquee Ticker**: Infinite scrolling technology ticker highlighting core competencies with pause-on-hover.
-- **Honest & Verified Skills Inventory**: Categorized cleanly into **Frontend**, **Backend**, **Databases**, and **Programming & Tools** without arbitrary progress percentages.
-- **Rich Project Showcases**:
-  - **Wedding Wagon**: Luxury wedding services marketplace concept with 3-sided RBAC and dynamic pricing engine.
-  - **AI Interview System**: Interactive interview prep platform with timed questions and evaluation history (verified active repo on GitHub).
-  - **Business Ordering App**: Multi-role B2B ordering and inventory management platform (in active development).
-  - Includes interactive **Code Snippet Peeks** on each card to view actual controller/service logic.
-- **Milestone-Driven Learning Journey**: Transparent development timeline tracking full-stack project building, Java & DSA algorithmic practice, and production deployments without fabricated work history.
-- **Functional Contact Section**:
-  - Live client-side field validation for Name, Email, and Message.
-  - Native `mailto` pre-fill generation for guaranteed delivery to `kumsailesh782@gmail.com`.
-  - 1-click "Copy Email" button with instant feedback toast.
-- **Accessibility & Performance**:
-  - Semantic HTML5 landmark structure (`header`, `nav`, `main`, `section`, `footer`).
-  - `@media (prefers-reduced-motion: reduce)` support.
-  - Custom branded SVG favicon and Open Graph / Twitter SEO meta tags.
-  - Fully responsive across mobile, tablet, and ultra-wide screens.
+1. **Futuristic Visual Design & 3D Atmosphere**:
+   - Deep space dark navy and black background (`#030712`, `#050816`) with electric cyan (`#00F5FF`) and neon purple (`#A855F7`) glowing lighting.
+   - Interactive 3D Canvas Particle Universe with mouse-responsive camera parallax and neural network mesh.
+   - Cyberpunk perspective grid floor horizon with neon scanline textures.
+   - Glassmorphic panels with backdrop blur and animated neon borders.
+
+2. **Hero Section (Cyberpunk 3D Presentation)**:
+   - Header overline: `SHAILESH KUMAR | FULL STACK DEVELOPER`
+   - Main heading: `BUILDING DIGITAL EXPERIENCES`
+   - Subtitle: `Full Stack Developer | React | Node.js | Java | MongoDB | AWS`
+   - Interactive 3D profile presentation with dual neon rotating rings, mouse-responsive 3D tilt, and orbiting technology badges (React, Node.js, Java, MongoDB, AWS).
+   - Action buttons: **View My Projects**, **Download Resume**, and **Contact Me**.
+
+3. **Floating 3D Project Showcase**:
+   - Real-time 3D perspective rotation tilt with dynamic holographic glare and depth layers (`Tilt3DCard`).
+   - 4 Featured Projects:
+     - **Wedding Wagon**: Full-Stack MERN marketplace with 3-sided RBAC and booking workflows.
+     - **AI Interview System**: Full-Stack AI platform with Java 21, Spring Boot 3, MySQL, and React.
+     - **Khoj – Missing Person Assistance Platform**: AI-based social impact platform with DPDP Act 2023 compliance.
+     - **AI-Based Clothing Recommendation System (StyleSense AI)**: Two-stage gender-aware outfit curation with MediaPipe pose landmarks.
+   - Action buttons on each card: **Live Demo** (opens in new tab or displays status modal), **GitHub** repository link, and **View Details** architectural modal.
+
+4. **3D Skills Section (13 Core Technologies)**:
+   - Interactive 3D technology cards for: **React.js, JavaScript, HTML, CSS, Node.js, Express.js, MongoDB, Java, Spring Boot, MySQL, Git, GitHub, and AWS**.
+   - Dual view modes: **3D Hologram Cards** and **Categorized Breakdown**.
+
+5. **Futuristic Academic Timeline**:
+   - Glowing neon circuit connections with animated pulse nodes.
+   - **B.Tech CSE (2024–2028 | Currently Pursuing)** at Maharishi Markandeshwar University.
+   - **Class 12th (2023 | 75%)** at R.L.S.Y. College, Bettiah.
+   - **Class 10th (2021 | 80.6%)** at Sahu Jain High School, Lauriya.
+
+6. **Verified Certificate Gallery & Owner Dashboard**:
+   - Public visitors only see verified published credentials (e.g. CodeSoft Web Development Internship Certificate).
+   - **Owner Management Dashboard**:
+     - Secured by Owner Master Passcode (`shailesh@2026`).
+     - Full CRUD: Add, edit, delete, upload screenshots/certificates, update GitHub/Live Demo links, and toggle Publish/Unpublish.
+     - Data persists across sessions via `localStorage`.
+
+7. **Futuristic Floating Navigation**:
+   - Floating glass navigation panel: **Home, About, Projects, Skills, Education, Certificates, Contact**.
+   - Smooth scrolling with active section indicator and Owner Mode quick access.
 
 ---
 
-## 🛠️ Tech Stack
-
-- **Frontend Framework**: React 18
-- **Tooling & Bundler**: Vite 6
-- **Styling**: Tailwind CSS 3.4 with custom glassmorphism, gradients, and keyframes
-- **Icons**: Lucide React
-- **Animations & Transitions**: CSS GPU-accelerated transforms & smooth scroll
-
----
-
-## 📁 Project Structure
+## 📁 Folder Structure
 
 ```text
 shailesh-portfolio/
-├── .github/
-│   └── workflows/
-│       └── deploy.yml          # Automated GitHub Pages CI/CD workflow
 ├── public/
-│   ├── favicon.svg             # Glowing geometric SK monogram favicon
-│   └── resume.pdf              # (Optional) Drop your resume here for direct download
+│   ├── favicon.svg                 # Branded glowing SK monogram
+│   ├── profile.jpg                 # Profile picture (drop your photo here)
+│   ├── profile-placeholder.svg     # Default developer vector portrait
+│   ├── resume.pdf                  # Resume PDF file
+│   ├── cert-placeholder.svg        # Certificate vector graphic
+│   ├── project-wedding-wagon.svg   # Wedding Wagon architectural mockup
+│   ├── project-ai-interview.svg    # AI Interview System architectural mockup
+│   ├── project-khoj.svg            # Khoj platform architectural mockup
+│   └── project-stylesense.svg      # StyleSense AI architectural mockup
 ├── src/
 │   ├── components/
-│   │   ├── Navbar.jsx          # Glassmorphic header with active section spy & mobile drawer
-│   │   ├── HeroSection.jsx     # Hero greeting, verified socials, and interactive IDE window
-│   │   ├── MarqueeTicker.jsx   # Infinite running stack ticker
-│   │   ├── AboutSection.jsx    # 2-column narrative & 4 engineering pillar cards
-│   │   ├── SkillsSection.jsx   # Categorized skills matrix with tech badges
-│   │   ├── ProjectsSection.jsx # Project cards with visual mockups & code peek toggles
-│   │   ├── JourneySection.jsx  # Continuous learning milestones
-│   │   ├── ContactSection.jsx  # Contact form with live validation & mailto fallback
-│   │   ├── Footer.jsx          # Copyright, socials, and back-to-top button
-│   │   ├── ResumeModal.jsx     # Transparent resume status dialog
-│   │   └── LiveDemoModal.jsx   # Project execution and deployment status dialog
+│   │   ├── Navbar.jsx              # Fixed header with active scroll spy & drawer
+│   │   ├── Footer.jsx              # Footer with links, copyright, and back-to-top
+│   │   ├── Preloader.jsx           # Fast loading splash animation
+│   │   ├── ScrollProgress.jsx      # Top viewport scroll progress indicator
+│   │   ├── ParticleBackground.jsx  # HTML5 Canvas starfield particles
+│   │   ├── BackToTop.jsx           # Floating back to top button
+│   │   ├── MarqueeTicker.jsx       # Infinite tech stack ticker
+│   │   ├── ResumeModal.jsx         # Interactive CV preview & download dialog
+│   │   ├── LiveDemoModal.jsx       # Live deployment status dialog
+│   │   ├── ProjectDetailModal.jsx  # Detailed architecture & code modal
+│   │   └── CertificateModal.jsx    # Certificate viewer & live editor
+│   ├── sections/
+│   │   ├── HeroSection.jsx         # Hero greeting, avatar, CTAs, and IDE window
+│   │   ├── AboutSection.jsx        # Professional narrative, journey, & strengths
+│   │   ├── EducationSection.jsx    # Chronological academic qualifications
+│   │   ├── SkillsSection.jsx       # Technical skills matrix & category filters
+│   │   ├── ProjectsSection.jsx     # Featured projects cards with modal triggers
+│   │   ├── CertificationsSection.jsx # 10+ certificates gallery with add/edit tools
+│   │   ├── ExperienceSection.jsx   # CodeSoft internship timeline & achievements
+│   │   ├── InterestsRoadmapSection.jsx # Passions & interactive roadmap progress
+│   │   └── ContactSection.jsx      # Validated contact form, click-to-call/email
 │   ├── data/
-│   │   └── portfolioData.js    # Centralized, honest portfolio data & links
+│   │   └── portfolioData.js        # Centralized data file for all content
 │   ├── styles/
-│   │   └── index.css           # Tailwind layers, glassmorphism, and scrollbar styles
-│   ├── App.jsx                 # Main application component
-│   └── main.jsx                # React DOM entrypoint
-├── dist/                       # Production-ready static output
-├── index.html                  # HTML5 template with SEO and Google Fonts
-├── package.json                # Project dependencies and scripts
-├── postcss.config.js           # PostCSS configuration
-├── tailwind.config.js          # Tailwind theme extensions & custom animations
-├── vercel.json                 # Vercel static rewrites and security headers
-└── vite.config.js              # Vite build configuration with relative base support
+│   │   └── index.css               # Tailwind CSS layers, glassmorphism, & animations
+│   ├── App.jsx                     # Top-level orchestration & modal state
+│   └── main.jsx                    # React entrypoint
+├── index.html                      # HTML template with SEO tags & Google Fonts
+├── package.json                    # Dependencies & build scripts
+├── tailwind.config.js              # Theme extensions & custom keyframes
+└── vite.config.js                  # Vite bundler configuration
 ```
 
 ---
 
-## 🚀 Running Locally on macOS
+## 🚀 Installation & Local Development
 
-### 1. Navigate to the project directory:
+### Prerequisites
+- Node.js (v18.x or v20.x+)
+- npm or yarn
+
+### 1. Clone or Open the Repository:
 ```bash
 cd /Users/shaileshkumar/.gemini/antigravity/scratch/shailesh-portfolio
 ```
 
-### 2. Start the local development server:
+### 2. Install Dependencies (if not already installed):
+```bash
+npm install
+```
+
+### 3. Run Development Server:
 ```bash
 npm run dev
 ```
 Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-### 3. Build for Production:
+### 4. Build for Production:
 ```bash
 npm run build
 ```
-The optimized static bundle is generated in the `dist/` directory.
+Generates an optimized static bundle in `dist/`.
 
-### 4. Preview the Production Build:
+### 5. Preview Production Build Locally:
 ```bash
 npm run preview
 ```
 
 ---
 
-## 🌐 Free Public Deployment Instructions
+## 📝 Customization & Maintenance Guide
 
-### Option A: Free Deployment via Vercel (Recommended — 2 Minutes)
+All portfolio content is decoupled from UI components inside:
+📂 `src/data/portfolioData.js`
 
-1. Push this project folder to your GitHub repository:
-   ```bash
-   git init
-   git add .
-   git commit -m "feat: complete premium developer portfolio"
-   git branch -M main
-   git remote add origin https://github.com/Shailesh-7777/portfolio.git
-   git push -u origin main
+### 1. How to Change Your Profile Picture
+1. Place your photo file inside `public/` and name it `profile.jpg` (or `.png`).
+2. If using a different file name, open `src/data/portfolioData.js` and update:
+   ```javascript
+   export const personalInfo = {
+     // ...
+     profileImage: "/your-photo-name.jpg",
+   };
    ```
-2. Go to [vercel.com](https://vercel.com) and sign in with your GitHub account.
-3. Click **"Add New Project"** and select your `portfolio` repository.
-4. Vercel automatically detects **Vite**:
-   - **Framework Preset**: `Vite`
-   - **Build Command**: `npm run build`
-   - **Output Directory**: `dist`
-5. Click **Deploy**. Within 45 seconds, your live production portfolio will be accessible at:
-   `https://<your-project-name>.vercel.app`
+3. Alternatively, you can hover over the avatar in the Hero section and click the camera icon to test any photo from your computer instantly!
+
+### 2. How to Add or Update Projects
+Open `src/data/portfolioData.js` and edit the `projects` array:
+```javascript
+export const projects = [
+  {
+    id: "your-project-id",
+    title: "Your Project Title",
+    category: "Full Stack MERN Application",
+    badge: "Production Ready",
+    shortDescription: "A brief one-sentence description.",
+    detailedOverview: "Full architectural breakdown of your project.",
+    tags: ["React.js", "Node.js", "Express.js", "MongoDB"],
+    image: "/project-image.svg", // place in public/
+    githubUrl: "https://github.com/Shailesh-7777/your-repo",
+    liveUrl: "https://your-demo-url.com",
+    features: [
+      "Feature 1 description",
+      "Feature 2 description"
+    ],
+    codeSnippet: `// Your code snippet here`
+  }
+];
+```
+
+### 3. How to Add or Edit Certificates
+- **Method A (Interactive in the browser)**:
+  1. Scroll down to the **Certifications Gallery** section on the website.
+  2. Click the **"Add New Certification Slot"** button, or click the **Edit icon** on any certificate card.
+  3. Enter the Title, Issuing Organization, Issue Date, Credential ID, Verification URL, and upload your certificate image.
+  4. Click **"Save Certificate"** (or click **"Copy JSON"** to paste it into `portfolioData.js`).
+- **Method B (Directly in code)**:
+  1. Open `src/data/portfolioData.js`.
+  2. Add an entry to `certifications`:
+     ```javascript
+     {
+       id: "cert-aws-cloud",
+       title: "AWS Certified Cloud Practitioner",
+       issuer: "Amazon Web Services",
+       date: "2024",
+       credentialId: "AWS-987654321",
+       verificationUrl: "https://aws.amazon.com/verification/...",
+       image: "/aws-cert.png",
+       isPlaceholder: false
+     }
+     ```
+
+### 4. How to Update Resume PDF
+1. Export your latest CV as a PDF file named `resume.pdf`.
+2. Save it directly into the `public/` folder:
+   `public/resume.pdf`
+3. The "Download Resume" button on the hero screen and in the navigation bar automatically downloads this file.
+
+### 5. How to Update Contact Details
+In `src/data/portfolioData.js`, modify `personalInfo`:
+```javascript
+export const personalInfo = {
+  name: "Shailesh Kumar",
+  email: "kumsailesh784@gmail.com",
+  phone: "+91 9972505004",
+  location: "Bettiah, West Champaran, Bihar, India",
+  github: "https://github.com/Shailesh-7777",
+  linkedin: "https://www.linkedin.com/in/shailesh-kumar-507324353",
+  leetcode: "https://leetcode.com/u/Shailesh-7777"
+};
+```
 
 ---
 
-### Option B: Free Deployment via GitHub Pages
+## 🌐 Deployment Instructions
 
-1. Push the code to your repository:
-   ```bash
-   git remote add origin https://github.com/Shailesh-7777/portfolio.git
-   git push -u origin main
-   ```
-2. On GitHub, navigate to your repository **Settings** -> **Pages**.
-3. Under **Build and deployment** -> **Source**, select **GitHub Actions**.
-4. The included `.github/workflows/deploy.yml` workflow will automatically run, build the Vite app, and publish it to:
-   `https://shailesh-7777.github.io/portfolio/`
+### Deploying to Vercel (Recommended)
+1. Push your repository to GitHub.
+2. Sign in to [Vercel](https://vercel.com/) and click **"Add New"** > **"Project"**.
+3. Import your GitHub repository (`shailesh-portfolio`).
+4. Framework Preset will automatically detect **Vite**.
+5. Click **"Deploy"**. Your portfolio will be live in under 60 seconds with SSL and global CDN!
 
----
+### Deploying to GitHub Pages
+The project includes a ready-to-use GitHub Actions workflow in `.github/workflows/deploy.yml`:
+1. In your GitHub repository, navigate to **Settings** > **Pages**.
+2. Under **Build and deployment**, set the Source to **GitHub Actions**.
+3. Push to `main` branch; GitHub Actions will automatically build and publish your portfolio.
 
-## ✏️ Customization Guide
-
-- **Adding Your Resume PDF**:
-  Drop your `resume.pdf` file into the `public/` directory (`public/resume.pdf`). Once present, visitors can click Resume to download it directly.
-- **Updating Social Links & Details**:
-  Open `src/data/portfolioData.js` to update emails, GitHub URLs, LinkedIn profile links, or project descriptions at any time.
+### Deploying to Netlify
+1. Drag and drop the `dist/` folder onto the [Netlify Drop](https://app.netlify.com/drop) page, or
+2. Connect your GitHub repository, set Build Command to `npm run build`, and Publish Directory to `dist`.
 
 ---
 
-## 🔒 Privacy & Honesty Standards
-
-This portfolio intentionally collects zero user telemetry and sets no tracking cookies. All project statuses, repository links, and milestones are honestly represented without fabricated statistics.
+## 📄 License
+This portfolio is created for Shailesh Kumar. All rights reserved.
